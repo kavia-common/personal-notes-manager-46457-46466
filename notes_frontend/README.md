@@ -1,82 +1,57 @@
-# Lightweight React Template for KAVIA
+# Personal Notes Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A simple web-based notes application that enables users to create, edit, and delete notes. The UI follows the "Ocean Professional" theme (blue and amber accents), is responsive, and persists notes in localStorage by default.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Create, edit, delete notes with instant updates
+- LocalStorage persistence (standalone, no backend required)
+- API-ready structure (optional) using `REACT_APP_API_BASE`
+- Responsive layout: list and form side-by-side on desktop, stacked on mobile
+- Inline validation (title required)
+- Accessible controls with focus states and ARIA roles
+- Ocean Professional theme with subtle gradients and transitions
 
 ## Getting Started
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
+Install dependencies (first run only).
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `npm start`
+Runs the app in development mode at http://localhost:3000
 
 ### `npm test`
-
-Launches the test runner in interactive watch mode.
+Launches the test runner.
 
 ### `npm run build`
+Builds the app for production into the `build` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Environment Variables
 
-## Customization
+You can optionally configure an API backend by setting:
 
-### Colors
+- `REACT_APP_API_BASE` — Base URL for the notes API (if provided and reachable, the code can be adapted to use it).
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+Other variables in this container (not directly used by this app but available if needed):
+- `REACT_APP_BACKEND_URL`, `REACT_APP_FRONTEND_URL`, `REACT_APP_WS_URL`,
+- `REACT_APP_NODE_ENV`, `REACT_APP_NEXT_TELEMETRY_DISABLED`,
+- `REACT_APP_ENABLE_SOURCE_MAPS`, `REACT_APP_PORT`, `REACT_APP_TRUST_PROXY`,
+- `REACT_APP_LOG_LEVEL`, `REACT_APP_HEALTHCHECK_PATH`,
+- `REACT_APP_FEATURE_FLAGS`, `REACT_APP_EXPERIMENTS_ENABLED`
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+## Styling
 
-### Components
+Theme variables and component styles are in `src/App.css`. The app uses CSS variables to implement:
+- primary: `#2563EB`
+- secondary/success: `#F59E0B`
+- error: `#EF4444`
+- background: `#f9fafb`
+- surface: `#ffffff`
+- text: `#111827`
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Notes
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- By default, the app stores and reads notes from `localStorage`.
+- The code is structured to easily switch to API calls in `useNotesService` if `REACT_APP_API_BASE` is set.
